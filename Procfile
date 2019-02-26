@@ -1,1 +1,1 @@
-bot: ruby rankobot.rb
+bot: ruby main.rb
