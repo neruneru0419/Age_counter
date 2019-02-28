@@ -8,7 +8,7 @@ client = Twitter::REST::Client.new do |config|
 end
 
 
-age = 17 
+age = 33
 reply = []
 loop do
   time = Time.now.min
@@ -18,7 +18,7 @@ loop do
     if tweet.text.include?("@Nerun_Erueru") and tweet.text.include?("誕生日") and !reply.include?(tweet.id) then
     age += 1
     reply.push(tweet.id)
-    client.update("ねるねるは現在#{age}歳です", options = {:in_reply_to_status_id => tweet.id})
+    client.update("@#{tweet.user.screen_name} ねるねるは現在#{age}歳です", options = {:in_reply_to_status_id => tweet.id})
     client.favorite(tweet.id)
     end
   end
