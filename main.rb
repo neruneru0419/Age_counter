@@ -22,7 +22,8 @@ loop do
         f.puts(i)
       end
       reply.push(tweet.id)
-      client.update("@#{tweet.user.screen_name} ねるねるは現在#{age.read}歳です", options = {:in_reply_to_status_id => tweet.id})
+      puts age.read
+      client.update("@#{tweet.user.screen_name} ねるねるは現在#{i}歳です", options = {:in_reply_to_status_id => tweet.id})
       client.favorite(tweet.id)
     end
   end
