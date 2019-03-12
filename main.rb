@@ -8,7 +8,8 @@ client = Twitter::REST::Client.new do |config|
 end
 
 
-age = 33
+age = File.open("age.txt", "r")
+i = age.read.to_i
 reply = []
 loop do
   time = Time.now.min
@@ -16,10 +17,13 @@ loop do
     puts tweet.text
     p reply
     if tweet.text.include?("@Nerun_Erueru") and tweet.text.include?("誕生日") and !reply.include?(tweet.id) then
-    age += 1
-    reply.push(tweet.id)
-    client.update("@#{tweet.user.screen_name} ねるねるは現在#{age}歳です", options = {:in_reply_to_status_id => tweet.id})
-    client.favorite(tweet.id)
+      i += 1
+      File.open("age.txt", "w") do |f|
+        f.puts(i)
+      end
+      reply.push(tweet.id)
+      client.update("@#{tweet.user.screen_name} ねるねるは現在#{age.read}歳です", options = {:in_reply_to_status_id => tweet.id})
+      client.favorite(tweet.id)
     end
   end
   if time % 15 == 0 then
