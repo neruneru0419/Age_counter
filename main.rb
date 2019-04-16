@@ -1,5 +1,6 @@
-require 'twitter'
 require 'aws-sdk-v1'
+require 'twitter'
+
 
 client = Twitter::REST::Client.new do |config|
   config.consumer_key    = ENV['MY_CONSUMER_KEY']
