@@ -26,8 +26,9 @@ loop do
     p reply
     if tweet.text.include?("@Nerun_Erueru") and (tweet.text.include?("誕生日") or tweet.text.include?("おたおめ") or tweet.text.include?("たんおめ")) and !reply.include?(tweet.id) then
       reply.push(tweet.id)
-      i = age.read
       age.write((age.read.to_i + 1).to_s)
+      i = age.read
+   
       client.update("@#{tweet.user.screen_name} ねるねるは現在#{i}歳です", options = {:in_reply_to_status_id => tweet.id})
       client.favorite(tweet.id)
     end
