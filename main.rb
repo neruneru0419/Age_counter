@@ -24,7 +24,7 @@ loop do
   client.home_timeline.each do |tweet|
     puts tweet.text
     p reply
-    if tweet.text.include?("@Nerun_Erueru") and (tweet.text.include?("誕生日") or tweet.text.include?("おたおめ") or tweet.text.include?("たんおめ")) and !reply.include?(tweet.id) then
+    if tweet.text.include?("@Nerun_Eruneru") and (tweet.text.include?("誕生日") or tweet.text.include?("おたおめ") or tweet.text.include?("たんおめ")) and !reply.include?(tweet.id) then
       reply.push(tweet.id)
       age.write((age.read.to_i + 1).to_s)
       i = age.read
