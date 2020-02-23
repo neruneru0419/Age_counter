@@ -31,7 +31,7 @@ loop do
    
       client.update("@#{tweet.user.screen_name} ねるねるは現在#{i}歳です", options = {:in_reply_to_status_id => tweet.id})
       client.favorite(tweet.id)
-    elsif tweet.text.include?("いま何歳") or tweet.text.include?("今何歳") then
+    elsif tweet.text.include?("@Nerun_Eruneru") and (tweet.text.include?("いま何歳") or tweet.text.include?("今何歳")) then
       reply.push(tweet.id)
       i = age.read
 
